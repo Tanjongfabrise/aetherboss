@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AetherBoss AI | Premium Trading Signals & AI Bot</title>
+<meta name="description" content="AetherBoss AI – Professional AI-powered crypto trading signals, live portfolio, demo trading and high-yield investment plans. Real-time charts powered by TradingView.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070b14;
+  --card: #0f1623;
+  --card2: #151d2e;
+  --border: #1e2a3f;
+  --primary: #00d4ff;
+  --primary-dim: #00a8cc;
+  --accent: #7c5cff;
+  --green: #00e676;
+  --red: #ff5252;
+  --gold: #ffd700;
+  --text: #e8eef7;
+  --muted: #8b9bb4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7,11,20,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+}
+.nav-links { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--primary); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+  cursor: pointer; border: none; transition: all .2s; text-decoration: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #000;
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,212,255,0.35); }
+.btn-outline {
+  background: transparent; border: 1px solid var(--border); color: var(--text);
+}
+.btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+.btn-sm { padding: 8px 14px; font-size: 0.85rem; }
+.btn-lg { padding: 14px 28px; font-size: 1rem; }
+
+/* HERO */
+.hero {
+  padding: 50px 0 30px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 60%);
+}
+.hero h1 {
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 span {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p { color: var(--muted); max-width: 620px; margin: 0 auto 24px; font-size: 1.02rem; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* LIVE STATS BAR */
+.live-bar {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  padding: 14px; margin: 20px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.stat { text-align: center; }
+.stat-value { font-family: 'Orbitron', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+.stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* SECTIONS */
+section { padding: 40px 0; }
+.section-title {
+  font-size: 1.5rem; font-weight: 700; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title::before {
+  content: ''; width: 4px; height: 20px; background: var(--primary); border-radius: 2px;
+}
+.section-sub { color: var(--muted); margin-bottom: 22px; font-size: 0.92rem; }
+
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  transition: border-color .2s;
+}
+.card:hover { border-color: rgba(0,212,255,0.25); }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+
+/* TRADINGVIEW CONTAINERS */
+.tv-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #131722;
+}
+.tv-chart-tall { height: 480px; }
+.tv-chart-med { height: 360px; }
+.tv-widget-box { height: 400px; }
+.tv-mini-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.tv-mini { height: 220px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+
+/* DEMO */
+.demo-balance {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--green);
+  margin: 6px 0 14px;
+}
+.demo-log {
+  max-height: 170px; overflow-y: auto;
+  background: var(--card2);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.82rem;
+  font-family: ui-monospace, monospace;
+}
+.demo-log div { padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.demo-log .win { color: var(--green); }
+.demo-log .loss { color: var(--red); }
+
+/* PRICING */
+.price-card { text-align: center; position: relative; overflow: hidden; }
+.price-card.featured {
+  border-color: var(--primary);
+  box-shadow: 0 0 28px rgba(0,212,255,0.14);
+}
+.price-card .badge {
+  position: absolute; top: 12px; right: -28px;
+  background: var(--primary); color: #000;
+  font-size: 0.68rem; font-weight: 700;
+  padding: 4px 30px; transform: rotate(45deg);
+}
+.price { font-size: 1.9rem; font-weight: 800; margin: 10px 0 4px; }
+.price span { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+.features { list-style: none; text-align: left; margin: 16px 0; }
+.features li { padding: 5px 0; font-size: 0.88rem; color: var(--muted); }
+.features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+
+/* INVESTMENT CALC */
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+@media (max-width: 500px) { .calc-grid { grid-template-columns: 1fr; } }
+label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px; }
+input[type="number"], select, input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%; padding: 11px 13px;
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: 0.95rem;
+}
+input:focus, select:focus { outline: none; border-color: var(--primary); }
+.calc-result {
+  background: linear-gradient(135deg, rgba(0,230,118,0.1), rgba(0,212,255,0.08));
+  border: 1px solid rgba(0,230,118,0.3);
+  border-radius: 12px; padding: 18px; text-align: center;
+}
+.calc-result .big { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; color: var(--green); font-weight: 700; }
+
+/* TESTIMONIAL POP */
+.testimonial-popup {
+  position: fixed; bottom: 70px; left: 16px; right: 16px; max-width: 370px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 13px 15px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  z-index: 90; display: none; animation: slideIn .4s ease;
+}
+@keyframes slideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.testimonial-popup.show { display: block; }
+.testi-header { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+.testi-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.8rem; color: #000;
+}
+.testi-name { font-weight: 600; font-size: 0.88rem; }
+.testi-time { font-size: 0.72rem; color: var(--muted); }
+.testi-text { font-size: 0.82rem; color: var(--muted); }
+
+/* MARQUEES */
+.marquee-wrap {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 80;
+  background: #0a101c; border-top: 1px solid var(--border);
+  height: 34px; overflow: hidden; display: flex; align-items: center;
+}
+.marquee {
+  display: flex; white-space: nowrap;
+  animation: marquee 48s linear infinite;
+}
+.marquee span { padding: 0 36px; font-size: 0.78rem; color: var(--muted); }
+.marquee .win { color: var(--green); }
+.marquee .dep { color: var(--primary); }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  z-index: 200; display: none; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; width: 100%; max-width: 420px;
+  max-height: 90vh; overflow-y: auto; padding: 22px;
+  position: relative;
+}
+.modal h3 { margin-bottom: 14px; font-size: 1.25rem; }
+.tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+.tab {
+  flex: 1; padding: 9px; text-align: center; border-radius: 8px;
+  background: var(--card2); cursor: pointer; font-weight: 600; font-size: 0.88rem;
+  border: 1px solid transparent;
+}
+.tab.active { border-color: var(--primary); color: var(--primary); }
+.form-group { margin-bottom: 12px; }
+.wallet-list { margin-top: 14px; }
+.wallet-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 9px 11px; background: var(--card2); border-radius: 8px;
+  margin-bottom: 7px; font-size: 0.78rem; word-break: break-all;
+}
+.wallet-item button {
+  background: var(--primary); color: #000; border: none;
+  padding: 4px 9px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; cursor: pointer; white-space: nowrap; margin-left: 8px;
+}
+.close-modal {
+  position: absolute; top: 14px; right: 14px;
+  background: none; border: none; color: var(--muted); font-size: 1.35rem; cursor: pointer;
+}
+
+/* GUARANTEE */
+.guarantee {
+  background: linear-gradient(135deg, rgba(124,92,255,0.12), rgba(0,212,255,0.08));
+  border: 1px solid rgba(124,92,255,0.3);
+  border-radius: 14px; padding: 22px; text-align: center;
+}
+
+/* VIDEO */
+.video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.video-card {
+  background: var(--card2); border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.video-player {
+  width: 100%;
+  background: #000;
+  display: block;
+  max-height: 420px;
+  object-fit: contain;
+}
+.video-info { padding: 12px; font-size: 0.85rem; color: var(--muted); text-align: center; }
+
+/* FOOTER */
+footer {
+  padding: 36px 0 55px;
+  border-top: 1px solid var(--border);
+  text-align: center; color: var(--muted); font-size: 0.82rem;
+}
+.footer-logo { font-family: 'Orbitron', sans-serif; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+
+/* SIGNAL FEED */
+.signal-feed { max-height: 300px; overflow-y: auto; }
+.signal-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px; border-bottom: 1px solid rgba(30,42,63,0.5);
+  font-size: 0.88rem;
+}
+.signal-item .pair { font-weight: 600; }
+.badge-buy { background: rgba(0,230,118,0.15); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+.badge-sell { background: rgba(255,82,82,0.15); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; }
+
+/* PORTFOLIO */
+.portfolio-item { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(30,42,63,0.5); }
+.portfolio-item:last-child { border-bottom: none; }
+
+.hidden { display: none !important; }
+
+/* TradingView copyright small */
+.tradingview-widget-copyright { font-size: 11px !important; text-align: center; padding: 4px 0; background: #131722; }
+.tradingview-widget-copyright a { color: #2962FF !important; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div class="logo" id="mainLogo" title="AetherBoss AI">AETHERBOSS AI</div>
+    <div class="nav-links">
+      <a href="#charts">Charts</a>
+      <a href="#market">Market</a>
+      <a href="#demo">Demo</a>
+      <a href="#premium">Premium</a>
+      <a href="#invest">Invest</a>
+      <span id="navUser" style="display:none;font-size:0.82rem;color:var(--muted);margin-right:6px;"></span>
+      <button class="btn btn-outline btn-sm" id="btnLogin" onclick="openAuth('signin')">Sign In</button>
+      <button class="btn btn-primary btn-sm" id="btnJoin" onclick="openAuth('signup')">Join VIP</button>
+      <button class="btn btn-outline btn-sm hidden" id="btnLogout" onclick="logoutUser()">Logout</button>
+      <button class="btn btn-primary btn-sm hidden" id="btnMyAccount" onclick="unlockMemberArea()">My Account</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <h1>Trade Smarter with<br><span>AI Boss Signals</span></h1>
+    <p>Professional-grade crypto signals powered by advanced AI. Real-time TradingView charts, live portfolio, demo trading and exclusive premium alerts.</p>
+    <div class="hero-cta">
+      <button class="btn btn-primary btn-lg" onclick="openAuth('signup')">Get Premium Signals</button>
+      <a href="#demo" class="btn btn-outline btn-lg">Try Live Demo</a>
+    </div>
+
+    <div class="live-bar">
+      <div class="stat">
+        <div class="stat-value" id="winRate">70.0%</div>
+        <div class="stat-label">Success Profile</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="signalsToday">41</div>
+        <div class="stat-label">Signals Today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="activeUsers">12.4k</div>
+        <div class="stat-label">Active Traders</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">24/7</div>
+        <div class="stat-label">AI Monitoring</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ADVANCED REAL-TIME CHART (TradingView) -->
+  <section id="charts">
+    <h2 class="section-title">Live Advanced Chart</h2>
+    <p class="section-sub">Real-time chart powered by TradingView • Switch any symbol • Full tools</p>
+    <div class="tv-container tv-chart-tall">
+      <!-- TradingView Advanced Chart Widget BEGIN -->
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div id="tv_advanced_chart" style="height:calc(100% - 32px);width:100%"></div>
+        <div class="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a>
+        </div>
+      </div>
+      <!-- TradingView Advanced Chart Widget END -->
+    </div>
+  </section>
+
+  <!-- SYMBOL OVERVIEW + MINI CHARTS -->
+  <section>
+    <h2 class="section-title">Symbol Overview & Mini Charts</h2>
+    <p class="section-sub">Key crypto pairs at a glance – live data from TradingView</p>
+    
+    <div class="grid-2" style="margin-bottom:18px;">
+      <div class="tv-container tv-widget-box">
+        <!-- Symbol Overview -->
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div id="tv_symbol_overview" style="height:100%;width:100%"></div>
+        </div>
+      </div>
+      <div class="tv-container tv-widget-box">
+        <!-- Market Overview -->
+        <div class="tradingview-widget-container" style="height:100%;width:100%">
+          <div id="tv_market_overview" style="height:100%;width:100%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tv-mini-row">
+      <div class="tv-mini">
+        <div id="tv_mini_btc" style="height:100%;width:100%"></div>
+      </div>
+      <div class="tv-mini">
+        <div id="tv_mini_eth" style="height:100%;width:100%"></div>
+      </div>
+      <div class="tv-mini">
+        <div id="tv_mini_sol" style="height:100%;width:100%"></div>
+      </div>
+      <div class="tv-mini">
+        <div id="tv_mini_bnb" style="height:100%;width:100%"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET DATA / STOCK MARKET STYLE -->
+  <section id="market">
+    <h2 class="section-title">Market Data & Overview</h2>
+    <p class="section-sub">Live market quotes and top movers • Powered by TradingView</p>
+    <div class="tv-container" style="height:420px;">
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div id="tv_market_data" style="height:100%;width:100%"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE PORTFOLIO -->
+  <section id="portfolio">
+    <h2 class="section-title">Live Portfolio (AI Boss)</h2>
+    <p class="section-sub">Current open positions managed by the AI Boss engine</p>
+    <div class="card">
+      <div id="portfolioList"></div>
+      <div style="margin-top:14px;display:flex;justify-content:space-between;font-weight:600;">
+        <span>Total Unrealized P/L</span>
+        <span class="up" id="totalPnL" style="color:var(--green)">+$14,280.50</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO TRADING -->
+  <section id="demo">
+    <h2 class="section-title">Live Demo Trading</h2>
+    <p class="section-sub">Feel the win before you pay. Simulate trades with virtual balance (success profile ~70%).</p>
+    <div class="grid-2">
+      <div class="card">
+        <div style="color:var(--muted);font-size:0.82rem;">Demo Account Balance</div>
+        <div class="demo-balance" id="demoBalance">$10,000.00</div>
+        <button class="btn btn-primary" style="width:100%;margin-bottom:10px;" onclick="simulateTrade()">⚡ Simulate Trade</button>
+        <button class="btn btn-outline btn-sm" style="width:100%;" onclick="resetDemo()">Reset Demo</button>
+        <div style="margin-top:14px;font-size:0.78rem;color:var(--muted);">
+          Each simulation follows the 70% success profile model (± realistic move).
+        </div>
+      </div>
+      <div class="card">
+        <strong style="display:block;margin-bottom:8px;">Trade Log</strong>
+        <div class="demo-log" id="demoLog">
+          <div>Welcome to AetherBoss Demo. Click Simulate Trade to start.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI BOSS SIGNALS FEED -->
+  <section id="signals">
+    <h2 class="section-title">AI Boss Live Signals</h2>
+    <p class="section-sub">Real-time signal stream from the premium AI engine (sample feed)</p>
+    <div class="card signal-feed" id="signalFeed"></div>
+    <div style="text-align:center;margin-top:14px;">
+      <button class="btn btn-primary" onclick="openAuth('signup')">Unlock Full AI Boss Signals</button>
+    </div>
+  </section>
+
+  <!-- PREMIUM PLANS -->
+  <section id="premium">
+    <h2 class="section-title">Premium Signals</h2>
+    <p class="section-sub">Choose your access level to the full AI Boss signal suite</p>
+    <div class="grid-3">
+      <div class="card price-card">
+        <div style="color:var(--muted);font-size:0.88rem;">Starter</div>
+        <div class="price">$100 <span>/ 1 month</span></div>
+        <ul class="features">
+          <li>Full AI Boss signal access</li>
+          <li>Daily high-probability setups</li>
+          <li>Entry / TP / SL levels</li>
+          <li>Telegram & App alerts</li>
+          <li>Basic support</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;" onclick="selectPlan('Starter', 100, '1 Month')">Join VIP</button>
+      </div>
+      <div class="card price-card featured">
+        <div class="badge">BEST VALUE</div>
+        <div style="color:var(--muted);font-size:0.88rem;">Pro</div>
+        <div class="price">$300 <span>/ 4 months</span></div>
+        <ul class="features">
+          <li>Everything in Starter</li>
+          <li>Priority signal delivery</li>
+          <li>Advanced risk management</li>
+          <li>Weekly market analysis</li>
+          <li>VIP support channel</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;" onclick="selectPlan('Pro', 300, '4 Months')">Join VIP</button>
+      </div>
+      <div class="card price-card">
+        <div style="color:var(--muted);font-size:0.88rem;">Elite</div>
+        <div class="price">$800 <span>/ 1 year</span></div>
+        <ul class="features">
+          <li>Everything in Pro</li>
+          <li>Exclusive elite signals</li>
+          <li>1-on-1 strategy calls</li>
+          <li>Early access to new tools</li>
+          <li>Lifetime priority support</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;" onclick="selectPlan('Elite', 800, '1 Year')">Join VIP</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRYPTO INVESTMENT -->
+  <section id="invest">
+    <h2 class="section-title">Crypto Investment Plans</h2>
+    <p class="section-sub">Managed AI portfolio • Starting from $1,000 • Target 8% monthly return</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="calc-grid">
+          <div>
+            <label>Investment Amount (USDT)</label>
+            <input type="number" id="investAmount" value="5000" min="1000" max="100000" step="100">
+          </div>
+          <div>
+            <label>Duration (Months)</label>
+            <select id="investMonths">
+              <option value="1">1 Month</option>
+              <option value="2">2 Months</option>
+              <option value="3">3 Months</option>
+              <option value="4">4 Months</option>
+              <option value="5">5 Months</option>
+              <option value="6" selected>6 Months</option>
+              <option value="7">7 Months</option>
+              <option value="8">8 Months</option>
+              <option value="9">9 Months</option>
+              <option value="10">10 Months</option>
+              <option value="11">11 Months</option>
+              <option value="12">12 Months</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-bottom:14px;" onclick="calculateProfit()">Calculate Profit</button>
+        <div class="calc-result">
+          <div style="font-size:0.82rem;color:var(--muted);margin-bottom:4px;">Projected Total Return</div>
+          <div class="big" id="totalReturn">$7,400.00</div>
+          <div style="margin-top:7px;font-size:0.88rem;">
+            Monthly Profit: <strong id="monthlyProfit" style="color:var(--green)">$400.00</strong><br>
+            Total Profit: <strong id="totalProfit" style="color:var(--green)">$2,400.00</strong>
+          </div>
+          <div style="margin-top:9px;font-size:0.72rem;color:var(--muted);">* 8% monthly compounded illustration. Past performance is not a guarantee of future results.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:10px;font-size:1.05rem;">Start Investing</h3>
+        <p style="color:var(--muted);font-size:0.88rem;margin-bottom:14px;">Minimum $1,000 • Maximum $100,000. Funds are allocated to the AI Boss managed portfolio.</p>
+        <button class="btn btn-primary btn-lg" style="width:100%;" onclick="openInvestPayment()">Invest Now – Link Wallet</button>
+        <div style="margin-top:18px;">
+          <div style="font-size:0.82rem;color:var(--muted);margin-bottom:7px;">Supported Assets</div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;">
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">USDT (TRC20)</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">USDT (ERC20)</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">BTC</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">ETH</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">SOL</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">TRX</span>
+            <span style="background:var(--card2);padding:5px 11px;border-radius:6px;font-size:0.78rem;">BNB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section>
+    <div class="guarantee">
+      <h3 style="font-size:1.25rem;margin-bottom:9px;">🛡 Profit & Return Guarantee Policy</h3>
+      <p style="color:var(--muted);max-width:700px;margin:0 auto;font-size:0.92rem;">
+        AetherBoss AI stands behind its performance. Premium signal subscribers who follow risk management rules are covered by our performance guarantee. 
+        Investment plans include structured monthly reporting. If agreed targets are not met under the stated conditions, eligible members may request review and compensation according to the official policy terms available after registration.
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL VIDEOS (YouTube Shorts) -->
+  <section id="testimonials">
+    <h2 class="section-title">Real Confirmations</h2>
+    <p class="section-sub">Real members sharing results with AetherBoss AI signals & investment</p>
+    <div class="video-grid">
+      <div class="video-card">
+        <video class="video-player" controls playsinline preload="metadata" poster="">
+          <source src="videos/testimony1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-info">Wallet balance confirmation – Binary trade payout received</div>
+      </div>
+      <div class="video-card">
+        <video class="video-player" controls playsinline preload="metadata">
+          <source src="videos/testimony2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-info">Invested $1,000 → $9,000 profit in 7 days</div>
+      </div>
+      <div class="video-card">
+        <video class="video-player" controls playsinline preload="metadata">
+          <source src="videos/testimony3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-info">Carrie Keseloff – Received $5,000 testimony</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== ADMIN PANEL ==================== -->
+<section id="adminArea" class="hidden" style="padding:40px 0;background:#0a0f18;">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
+      <h2 class="section-title" style="margin:0;">🔐 Admin – Payment Records</h2>
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('adminArea').classList.add('hidden')">Close Admin</button>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px;">
+      <strong>How to verify:</strong> Look at the screenshot → check your crypto wallet that the money arrived → click <strong>Approve</strong>. 
+      After Approve, the user only gets access to what they paid for (Premium Signals page OR Investment page — not both).
+    </p>
+    <div class="card" style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+        <thead>
+          <tr style="color:var(--muted);text-align:left;">
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Name</th>
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Plan</th>
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Amount</th>
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Screenshot</th>
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Status</th>
+            <th style="padding:10px 8px;border-bottom:1px solid var(--border);">Action</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody">
+          <tr><td colspan="6" style="padding:20px;text-align:center;color:var(--muted);">No payments yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-outline btn-sm" onclick="refreshAdminTable()">Refresh</button>
+      <button class="btn btn-outline btn-sm" onclick="if(confirm('Clear all payment records on this device?')){alert('Payment records are stored on the server. Contact host to clear.');}">Clear Records</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">AETHERBOSS AI</div>
+    <p>Professional AI Trading Signals & Managed Crypto Investments</p>
+    <p style="margin-top:10px;font-size:0.72rem;">Trading involves risk. Past performance does not guarantee future results. Only invest what you can afford to lose. Charts & market data by TradingView.</p>
+  </div>
+</footer>
+
+<!-- TESTIMONIAL POPUP -->
+<div class="testimonial-popup" id="testiPopup">
+  <div class="testi-header">
+    <div class="testi-avatar" id="testiAvatar">JD</div>
+    <div>
+      <div class="testi-name" id="testiName">John D.</div>
+      <div class="testi-time" id="testiTime">just now</div>
+    </div>
+  </div>
+  <div class="testi-text" id="testiText">Just closed another winning trade with AI Boss. +$2,140 on ETH!</div>
+</div>
+
+<!-- MARQUEES -->
+<div class="marquee-wrap">
+  <div class="marquee" id="marqueeContent"></div>
+</div>
+
+<!-- AUTH / PAYMENT MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="close-modal" onclick="closeModal()">&times;</button>
+    <h3 id="modalTitle">Create Account</h3>
+    <div class="tabs">
+      <div class="tab active" id="tabSignup" onclick="switchTab('signup')">Sign Up</div>
+      <div class="tab" id="tabSignin" onclick="switchTab('signin')">Sign In</div>
+    </div>
+    <div id="signupForm">
+      <div class="form-group">
+        <label>Full Real Name *</label>
+        <input type="text" id="regName" placeholder="e.g. John Michael Smith" minlength="3" required>
+      </div>
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" id="regEmail" placeholder="you@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Strong Password * (min 8 chars, letter + number)</label>
+        <input type="password" id="regPass" placeholder="Create a strong password" minlength="8" required>
+        <div id="passStrength" style="font-size:0.75rem;margin-top:4px;color:var(--muted);"></div>
+      </div>
+      <div id="planSummary" class="hidden" style="background:var(--card2);padding:11px;border-radius:8px;margin-bottom:12px;font-size:0.88rem;">
+        Selected: <strong id="selectedPlanName">—</strong> — $<span id="selectedPlanPrice">0</span>
+      </div>
+      <button class="btn btn-primary" style="width:100%;" onclick="proceedToPayment()">Continue to Payment</button>
+    </div>
+    <div id="signinForm" class="hidden">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••">
+      </div>
+      <button class="btn btn-primary" style="width:100%;" onclick="proceedToPayment()">Sign In & Continue</button>
+    </div>
+
+    <div id="paymentSection" class="hidden">
+      <h3 style="margin-top:6px;">Complete Payment</h3>
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:11px;" id="paymentDesc">Send the exact amount to one of the wallets below.</p>
+      <div class="wallet-list" id="walletList"></div>
+      
+      <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px;">
+        <div class="form-group">
+          <label>Upload Payment Proof *</label>
+          <p style="font-size:0.78rem;color:var(--muted);margin:0 0 8px;">Tap the button below to open your files or gallery and choose a screenshot/image.</p>
+          <input type="file" id="payScreenshot" accept="image/*,.png,.jpg,.jpeg,.webp,.gif" style="display:none;">
+          <button type="button" class="btn btn-outline" style="width:100%;margin-bottom:8px;" onclick="document.getElementById('payScreenshot').click()">📂 Choose &amp; Open File</button>
+          <div id="selectedFileName" style="font-size:0.8rem;color:var(--primary);margin-bottom:6px;display:none;"></div>
+          <div id="screenshotPreview" style="margin-top:10px;display:none;">
+            <img id="screenshotImg" style="max-width:100%;max-height:180px;border-radius:8px;border:1px solid var(--border);">
+          </div>
+        </div>
+        <button id="submitPayBtn" class="btn btn-primary" style="width:100%;" onclick="submitPaymentProof()">Submit Payment Proof</button>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:10px;text-align:center;">Choose a clear screenshot from your files. Admin must verify before access is given. You only get the product you paid for.</p>
+      </div>
+    </div>
+
+    <!-- Waiting for approval -->
+    <div id="activationSection" class="hidden">
+      <div style="text-align:center;padding:10px 0;">
+        <div style="font-size:2.5rem;margin-bottom:8px;">⏳</div>
+        <h3 style="margin-bottom:8px;">Payment Submitted – Pending Verification</h3>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px;" id="activationMsg">Your screenshot has been received. Please wait while we verify the payment. You will get access only after approval.</p>
+        <button class="btn btn-primary" style="width:100%;margin-bottom:8px;" onclick="closeModal(); unlockMemberArea();">View Status</button>
+        <button class="btn btn-outline" style="width:100%;" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MEMBER DASHBOARD ==================== -->
+<section id="memberArea" class="hidden" style="padding:40px 0; background:linear-gradient(180deg, rgba(0,212,255,0.05), transparent);">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+      <div>
+        <h2 class="section-title" style="margin:0;">Member Dashboard</h2>
+        <p style="color:var(--muted);font-size:0.9rem;margin-top:4px;">Welcome back, <strong id="memberName">Trader</strong> • Status: <span style="color:var(--green);">ACTIVE</span></p>
+      </div>
+      <div style="font-size:0.85rem;color:var(--muted);">Plan: <strong id="memberPlan">Premium</strong></div>
+    </div>
+
+    <div class="grid-2">
+      <!-- LIVE AI SIGNALS - only if premium approved -->
+      <div class="card" id="signalsCard" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <strong>🤖 AI Boss Live Signals</strong>
+          <span style="font-size:0.75rem;background:rgba(0,230,118,0.15);color:var(--green);padding:3px 8px;border-radius:4px;">AUTO GENERATING</span>
+        </div>
+        <div id="liveAiSignals" class="signal-feed" style="max-height:340px;"></div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:10px;">New signals appear automatically every 45–90 seconds.</p>
+      </div>
+
+      <!-- INVESTMENT PROFIT GROWTH - only if investment approved -->
+      <div class="card" id="investCard" style="display:none;">
+        <strong style="display:block;margin-bottom:12px;">📈 My Investment Page</strong>
+        <div style="text-align:center;padding:10px 0;">
+          <div style="font-size:0.8rem;color:var(--muted);">Current Investment Value</div>
+          <div id="investValue" style="font-family:'Orbitron',sans-serif;font-size:2rem;color:var(--green);font-weight:700;margin:6px 0;">$0.00</div>
+          <div style="font-size:0.85rem;">Profit: <strong id="investProfit" style="color:var(--green);">+$0.00</strong> • <span id="investPct">0.00%</span></div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-top:6px;">Principal: <span id="investPrincipal">$0</span> • Term: <span id="investTerm">—</span></div>
+        </div>
+        <div style="height:8px;background:var(--card2);border-radius:4px;overflow:hidden;margin:16px 0;">
+          <div id="profitBar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--green));transition:width 1s;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted);">
+          <span>Started: <span id="investStartDate">—</span></span>
+          <span>Ends: <span id="investEndDate">—</span></span>
+        </div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:6px;text-align:center;">Progress: <span id="investProgressText">0%</span> of term • 8% monthly</div>
+        <canvas id="profitChart" height="120" style="width:100%;margin-top:14px;border-radius:8px;"></canvas>
+        <div id="withdrawBox" style="display:none;margin-top:18px;text-align:center;">
+          <p style="color:var(--green);font-weight:600;margin-bottom:10px;">✓ Investment term completed!</p>
+          <button class="btn btn-primary btn-lg" style="width:100%;" onclick="requestWithdraw()">Withdraw Funds</button>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:8px;">Your final balance is ready for withdrawal.</p>
+        </div>
+      </div>
+    </div>
+    <div id="pendingNotice" class="card" style="display:none;text-align:center;margin-top:16px;">
+      <p style="color:var(--muted);">⏳ Your payment is still pending admin verification. Access will unlock after approval.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRADINGVIEW WIDGET SCRIPTS ============ -->
+<script>
+/* Advanced Chart – real-time, symbol change enabled, dark theme, 12M default look */
+(function() {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+  script.type = 'text/javascript';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "autosize": true,
+    "symbol": "BINANCE:BTCUSDT",
+    "interval": "60",
+    "timezone": "Etc/UTC",
+    "theme": "dark",
+    "style": "1",
+    "locale": "en",
+    "backgroundColor": "rgba(19, 23, 34, 1)",
+    "gridColor": "rgba(42, 46, 57, 0.5)",
+    "withdateranges": true,
+    "hide_side_toolbar": false,
+    "allow_symbol_change": true,
+    "calendar": false,
+    "support_host": "https://www.tradingview.com"
+  });
+  document.getElementById('tv_advanced_chart').appendChild(script);
+})();
+
+/* Symbol Overview */
+(function() {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
+  script.type = 'text/javascript';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "symbols": [
+      ["BINANCE:BTCUSDT|1D"],
+      ["BINANCE:ETHUSDT|1D"],
+      ["BINANCE:SOLUSDT|1D"],
+      ["BINANCE:BNBUSDT|1D"]
+    ],
+    "chartOnly": false,
+    "width": "100%",
+    "height": "100%",
+    "locale": "en",
+    "colorTheme": "dark",
+    "autosize": true,
+    "showVolume": false,
+    "showMA": false,
+    "hideDateRanges": false,
+    "hideMarketStatus": false,
+    "hideSymbolLogo": false,
+    "scalePosition": "right",
+    "scaleMode": "Normal",
+    "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+    "fontSize": "10",
+    "noTimeScale": false,
+    "valuesTracking": "1",
+    "changeMode": "price-and-percent",
+    "chartType": "area",
+    "maLineColor": "#2962FF",
+    "maLineWidth": 1,
+    "maLength": 9,
+    "backgroundColor": "rgba(19, 23, 34, 1)",
+    "lineWidth": 2,
+    "lineType": 0,
+    "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"]
+  });
+  document.getElementById('tv_symbol_overview').appendChild(script);
+})();
+
+/* Market Overview */
+(function() {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+  script.type = 'text/javascript';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "colorTheme": "dark",
+    "dateRange": "12M",
+    "showChart": true,
+    "locale": "en",
+    "width": "100%",
+    "height": "100%",
+    "largeChartUrl": "",
+    "isTransparent": false,
+    "showSymbolLogo": true,
+    "showFloatingTooltip": false,
+    "plotLineColorGrowing": "rgba(0, 212, 255, 1)",
+    "plotLineColorFalling": "rgba(0, 212, 255, 1)",
+    "gridLineColor": "rgba(42, 46, 57, 0)",
+    "scaleFontColor": "rgba(139, 155, 180, 1)",
+    "belowLineFillColorGrowing": "rgba(0, 212, 255, 0.12)",
+    "belowLineFillColorFalling": "rgba(0, 212, 255, 0.12)",
+    "belowLineFillColorGrowingBottom": "rgba(0, 212, 255, 0)",
+    "belowLineFillColorFallingBottom": "rgba(0, 212, 255, 0)",
+    "symbolActiveColor": "rgba(0, 212, 255, 0.12)",
+    "tabs": [
+      {
+        "title": "Crypto",
+        "symbols": [
+          { "s": "BINANCE:BTCUSDT", "d": "Bitcoin" },
+          { "s": "BINANCE:ETHUSDT", "d": "Ethereum" },
+          { "s": "BINANCE:SOLUSDT", "d": "Solana" },
+          { "s": "BINANCE:BNBUSDT", "d": "BNB" },
+          { "s": "BINANCE:XRPUSDT", "d": "XRP" },
+          { "s": "BINANCE:ADAUSDT", "d": "Cardano" }
+        ]
+      },
+      {
+        "title": "Indices",
+        "symbols": [
+          { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+          { "s": "FOREXCOM:NSXUSD", "d": "US 100" },
+          { "s": "FOREXCOM:DJI", "d": "Dow 30" }
+        ]
+      }
+    ]
+  });
+  document.getElementById('tv_market_overview').appendChild(script);
+})();
+
+/* Mini Charts */
+function createMini(id, symbol) {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+  script.type = 'text/javascript';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "symbol": symbol,
+    "width": "100%",
+    "height": "100%",
+    "locale": "en",
+    "dateRange": "12M",
+    "colorTheme": "dark",
+    "isTransparent": false,
+    "autosize": true,
+    "largeChartUrl": ""
+  });
+  document.getElementById(id).appendChild(script);
+}
+createMini('tv_mini_btc', 'BINANCE:BTCUSDT');
+createMini('tv_mini_eth', 'BINANCE:ETHUSDT');
+createMini('tv_mini_sol', 'BINANCE:SOLUSDT');
+createMini('tv_mini_bnb', 'BINANCE:BNBUSDT');
+
+/* Market Data / Quotes style (using market quotes widget) */
+(function() {
+  const script = document.createElement('script');
+  script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+  script.type = 'text/javascript';
+  script.async = true;
+  script.innerHTML = JSON.stringify({
+    "width": "100%",
+    "height": "100%",
+    "symbolsGroups": [
+      {
+        "name": "Crypto",
+        "symbols": [
+          { "name": "BINANCE:BTCUSDT", "displayName": "BTC/USDT" },
+          { "name": "BINANCE:ETHUSDT", "displayName": "ETH/USDT" },
+          { "name": "BINANCE:SOLUSDT", "displayName": "SOL/USDT" },
+          { "name": "BINANCE:BNBUSDT", "displayName": "BNB/USDT" },
+          { "name": "BINANCE:XRPUSDT", "displayName": "XRP/USDT" },
+          { "name": "BINANCE:ADAUSDT", "displayName": "ADA/USDT" },
+          { "name": "BINANCE:AVAXUSDT", "displayName": "AVAX/USDT" },
+          { "name": "BINANCE:DOTUSDT", "displayName": "DOT/USDT" }
+        ]
+      },
+      {
+        "name": "Stocks & Indices",
+        "symbols": [
+          { "name": "NASDAQ:AAPL", "displayName": "Apple" },
+          { "name": "NASDAQ:TSLA", "displayName": "Tesla" },
+          { "name": "NASDAQ:NVDA", "displayName": "NVIDIA" },
+          { "name": "FOREXCOM:SPXUSD", "displayName": "S&P 500" },
+          { "name": "FOREXCOM:NSXUSD", "displayName": "Nasdaq 100" }
+        ]
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "colorTheme": "dark",
+    "locale": "en"
+  });
+  document.getElementById('tv_market_data').appendChild(script);
+})();
+</script>
+
+<script>
+/* ===================== SITE LOGIC ===================== */
+const wallets = {
+  USDT_TRC20: 'TSYm3MdjVHYvxCBQe5uA8EHnDxYMNA2hXQ',
+  USDT_ERC20: '0x3a354D8468b8512A2288C3E26B2184e813BbfF8D',
+  BTC: 'bc1q9nnzneusearj32fgn8z9tkretz2wlgqa5q2jv2',
+  ETH: '0x181E7c178c9A5f5CFBC19c9F8063B10eE01b5b1e',
+  SOL: 'BiLtf3WcWXFrCVqXoL7qhCCAPMxpoVcTsUdxQzdYm4Zj',
+  TRX: 'TUgDBCzRv7QC7bs9iF9AuT67UCfrWQfqPZ',
+  BNB: '0x3a354D8468b8512A2288C3E26B2184e813BbfF8D'
+};
+
+const portfolio = [
+  { pair: 'BTC/USDT', side: 'LONG', entry: 65200, current: 67540, size: 0.28, pnl: 655 },
+  { pair: 'ETH/USDT', side: 'LONG', entry: 3280, current: 3421, size: 3.8, pnl: 536 },
+  { pair: 'SOL/USDT', side: 'LONG', entry: 162.5, current: 178.42, size: 70, pnl: 1114 },
+  { pair: 'BNB/USDT', side: 'SHORT', entry: 625, current: 612.3, size: 9, pnl: 114 },
+  { pair: 'AVAX/USDT', side: 'LONG', entry: 35.1, current: 38.76, size: 180, pnl: 659 }
+];
+
+const signals = [
+  { pair: 'BTC/USDT', side: 'BUY', entry: '67,200', tp: '69,800', sl: '65,900', time: '2 min ago' },
+  { pair: 'SOL/USDT', side: 'BUY', entry: '176.50', tp: '185.00', sl: '172.00', time: '8 min ago' },
+  { pair: 'ETH/USDT', side: 'SELL', entry: '3,450', tp: '3,320', sl: '3,510', time: '14 min ago' },
+  { pair: 'BNB/USDT', side: 'BUY', entry: '608.00', tp: '625.00', sl: '598.00', time: '22 min ago' },
+  { pair: 'XRP/USDT', side: 'BUY', entry: '0.618', tp: '0.645', sl: '0.605', time: '31 min ago' },
+  { pair: 'AVAX/USDT', side: 'BUY', entry: '37.90', tp: '40.20', sl: '36.80', time: '45 min ago' }
+];
+
+const testimonials = [
+  { name: 'John D.', initials: 'JD', text: 'Just closed another winning trade with AI Boss. +$2,140 on ETH!' },
+  { name: 'Sarah M.', initials: 'SM', text: 'Withdrew $12,000 this week. This bot is insane 🔥' },
+  { name: 'Mike T.', initials: 'MT', text: 'AI Boss hit multiple wins for me this week. Life changing.' },
+  { name: 'Priya K.', initials: 'PK', text: 'Started with $3k, now sitting on solid gains in 4 months.' },
+  { name: 'Alex R.', initials: 'AR', text: 'Best signal service I have ever used. Clear entries every time.' },
+  { name: 'Lina W.', initials: 'LW', text: 'The demo convinced me. Real account already up nicely.' },
+  { name: 'Carlos V.', initials: 'CV', text: 'User***78 withdrew $2,400 USDT – that was me! Fast payout.' },
+  { name: 'Emma S.', initials: 'ES', text: 'Premium signals are pure gold. Already recovered the yearly fee.' },
+  { name: 'David H.', initials: 'DH', text: 'SOL long from the AI Boss paid for my holiday.' },
+  { name: 'Nina O.', initials: 'NO', text: 'I was skeptical… now I tell everyone about AetherBoss.' },
+  { name: 'Tom B.', initials: 'TB', text: 'Live portfolio is transparent. Love seeing the open trades.' },
+  { name: 'Aisha F.', initials: 'AF', text: '8% monthly on the investment plan is real. Compounding works.' },
+  { name: 'Ryan C.', initials: 'RC', text: 'Hit TP on BTC this morning. Another clean win.' },
+  { name: 'Sophie L.', initials: 'SL', text: 'Support helped me set risk properly. Results speak for themselves.' },
+  { name: 'Kevin P.', initials: 'KP', text: 'From demo to live in 3 days. Best decision this year.' }
+];
+
+const fullTestimonials = [];
+for (let i = 0; i < 60; i++) {
+  const t = testimonials[i % testimonials.length];
+  fullTestimonials.push({ name: t.name, initials: t.initials, text: t.text + (i > 14 ? ` (#${i+1})` : '') });
+}
+
+const marqueeItems = [
+  '<span class="win">John D. just won $4,500 on SOL/USDT</span>',
+  '<span class="win">Sarah M. withdrew $12,000</span>',
+  '<span class="win">AI Boss Hit strong streak!</span>',
+  '<span class="dep">User***78 withdrew $2,400 USDT</span>',
+  '<span class="dep">User***12 deposited $5,000 BTC</span>',
+  '<span class="win">Mike T. closed +$3,820 on ETH</span>',
+  '<span class="win">Priya K. hit TP on AVAX (+$1,950)</span>',
+  '<span class="dep">User***44 deposited $8,500 USDT</span>',
+  '<span class="win">Alex R. multiple wins today with AI Boss</span>',
+  '<span class="win">Lina W. withdrew $7,200</span>',
+  '<span class="dep">User***91 deposited $15,000 ETH</span>',
+  '<span class="win">Carlos V. just won $2,100 on BNB</span>'
+];
+
+let demoBalance = 10000;
+let currentPlan = null;
+let testiIndex = 0;
+
+function init() {
+  renderPortfolio();
+  renderSignals();
+  renderMarquee();
+  calculateProfit();
+  startLiveUpdates();
+  startTestimonialCycle();
+}
+
+function renderPortfolio() {
+  const el = document.getElementById('portfolioList');
+  el.innerHTML = portfolio.map(p => `
+    <div class="portfolio-item">
+      <div>
+        <strong>${p.pair}</strong>
+        <span style="margin-left:8px;font-size:0.78rem;color:${p.side==='LONG'?'var(--green)':'var(--red)'}">${p.side}</span>
+        <div style="font-size:0.78rem;color:var(--muted);">Entry $${p.entry} • Size ${p.size}</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="color:${p.pnl>=0?'var(--green)':'var(--red)'}">$${p.pnl>=0?'+':''}${p.pnl.toFixed(0)}</div>
+        <div style="font-size:0.78rem;color:var(--muted);">$${p.current}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderSignals() {
+  const el = document.getElementById('signalFeed');
+  el.innerHTML = signals.map(s => `
+    <div class="signal-item">
+      <div>
+        <span class="pair">${s.pair}</span>
+        <span class="${s.side==='BUY'?'badge-buy':'badge-sell'}" style="margin-left:8px;">${s.side}</span>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Entry ${s.entry} • TP ${s.tp} • SL ${s.sl}</div>
+      </div>
+      <div style="font-size:0.72rem;color:var(--muted);">${s.time}</div>
+    </div>
+  `).join('');
+}
+
+function renderMarquee() {
+  const content = marqueeItems.join('') + marqueeItems.join('');
+  document.getElementById('marqueeContent').innerHTML = content;
+}
+
+function startLiveUpdates() {
+  setInterval(() => {
+    // keep success profile around 70%
+    const wr = 68.5 + Math.random() * 3;
+    document.getElementById('winRate').textContent = wr.toFixed(1) + '%';
+    document.getElementById('signalsToday').textContent = 38 + Math.floor(Math.random()*8);
+  }, 4000);
+
+  setInterval(() => {
+    const pairs = ['BTC/USDT','ETH/USDT','SOL/USDT','BNB/USDT','AVAX/USDT'];
+    const side = Math.random() > 0.35 ? 'BUY' : 'SELL';
+    const pair = pairs[Math.floor(Math.random()*pairs.length)];
+    signals.unshift({ pair, side, entry: '—', tp: '—', sl: '—', time: 'just now' });
+    if (signals.length > 8) signals.pop();
+    renderSignals();
+  }, 28000);
+}
+
+function simulateTrade() {
+  // 70% success profile
+  const isWin = Math.random() < 0.70;
+  const pct = isWin ? (4 + Math.random() * 8) : -(1.5 + Math.random() * 4);
+  const change = demoBalance * (pct / 100);
+  demoBalance += change;
+  document.getElementById('demoBalance').textContent = '$' + demoBalance.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  const log = document.getElementById('demoLog');
+  const time = new Date().toLocaleTimeString();
+  const div = document.createElement('div');
+  div.className = isWin ? 'win' : 'loss';
+  div.textContent = `[${time}] ${isWin?'WIN':'LOSS'} ${pct>=0?'+':''}${pct.toFixed(2)}% → $${change>=0?'+':''}${change.toFixed(2)} | Balance: $${demoBalance.toFixed(2)}`;
+  log.prepend(div);
+}
+
+function resetDemo() {
+  demoBalance = 10000;
+  document.getElementById('demoBalance').textContent = '$10,000.00';
+  document.getElementById('demoLog').innerHTML = '<div>Demo reset. Click Simulate Trade to start.</div>';
+}
+
+function calculateProfit() {
+  let amount = parseFloat(document.getElementById('investAmount').value) || 1000;
+  amount = Math.max(1000, Math.min(100000, amount));
+  document.getElementById('investAmount').value = amount;
+  const months = parseInt(document.getElementById('investMonths').value) || 1;
+  const monthlyRate = 0.08;
+  let total = amount;
+  for (let i = 0; i < months; i++) total *= (1 + monthlyRate);
+  const profit = total - amount;
+  const monthly = amount * monthlyRate;
+  document.getElementById('totalReturn').textContent = '$' + total.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById('monthlyProfit').textContent = '$' + monthly.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById('totalProfit').textContent = '$' + profit.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+document.getElementById('investAmount').addEventListener('input', calculateProfit);
+document.getElementById('investMonths').addEventListener('change', calculateProfit);
+
+function openAuth(mode) {
+  document.getElementById('authModal').classList.add('show');
+  switchTab(mode || 'signup');
+  document.getElementById('paymentSection').classList.add('hidden');
+  document.getElementById('signupForm').classList.remove('hidden');
+  document.getElementById('signinForm').classList.toggle('hidden', mode !== 'signin');
+  if (mode === 'signin') document.getElementById('signupForm').classList.add('hidden');
+  if (currentPlan) {
+    document.getElementById('planSummary').classList.remove('hidden');
+    document.getElementById('selectedPlanName').textContent = currentPlan.name + ' (' + currentPlan.duration + ')';
+    document.getElementById('selectedPlanPrice').textContent = currentPlan.price;
+  } else {
+    document.getElementById('planSummary').classList.add('hidden');
+  }
+}
+function closeModal() { document.getElementById('authModal').classList.remove('show'); }
+function switchTab(tab) {
+  document.getElementById('tabSignup').classList.toggle('active', tab === 'signup');
+  document.getElementById('tabSignin').classList.toggle('active', tab === 'signin');
+  document.getElementById('signupForm').classList.toggle('hidden', tab !== 'signup');
+  document.getElementById('signinForm').classList.toggle('hidden', tab !== 'signin');
+  document.getElementById('paymentSection').classList.add('hidden');
+  document.getElementById('modalTitle').textContent = tab === 'signup' ? 'Create Account' : 'Sign In';
+}
+function selectPlan(name, price, duration) {
+  currentPlan = { name, price, duration };
+  openAuth('signup');
+}
+function openInvestPayment() {
+  const amt = document.getElementById('investAmount').value;
+  const months = parseInt(document.getElementById('investMonths').value) || 1;
+  currentPlan = {
+    name: 'Crypto Investment',
+    price: amt,
+    duration: months + ' Months',
+    months: months
+  };
+  openAuth('signup');
+}
+
+const API = (window.location.protocol === 'http:' || window.location.protocol === 'https:')
+  ? window.location.origin : null;
+let USE_SERVER = !!API;
+let authToken = localStorage.getItem('aetherboss_token') || '';
+let currentUser = null;
+
+function setAuth(token, user) {
+  authToken = token || '';
+  currentUser = user || null;
+  if (token) localStorage.setItem('aetherboss_token', token);
+  else localStorage.removeItem('aetherboss_token');
+  if (user) localStorage.setItem('aetherboss_user', JSON.stringify(user));
+  else localStorage.removeItem('aetherboss_user');
+  updateNavAuth();
+}
+
+function loadCachedUser() {
+  try {
+    currentUser = JSON.parse(localStorage.getItem('aetherboss_user') || 'null');
+  } catch(e) { currentUser = null; }
+}
+
+function getLocalUsers() {
+  try { return JSON.parse(localStorage.getItem('aetherboss_users') || '{}'); } catch(e) { return {}; }
+}
+function saveLocalUsers(u) { localStorage.setItem('aetherboss_users', JSON.stringify(u)); }
+function getLocalPayments() {
+  try { return JSON.parse(localStorage.getItem('aetherboss_all_payments') || '[]'); } catch(e) { return []; }
+}
+function saveLocalPayments(p) { localStorage.setItem('aetherboss_all_payments', JSON.stringify(p)); }
+
+async function api(path, options = {}) {
+  // Offline / file mode – no server
+  if (!USE_SERVER) {
+    return localApi(path, options);
+  }
+  const headers = options.headers || {};
+  if (!(options.body instanceof FormData)) {
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+  }
+  if (authToken) headers['Authorization'] = 'Bearer ' + authToken;
+  let res;
+  try {
+    res = await fetch(API + path, { ...options, headers });
+  } catch (e) {
+    // fall back to local mode if server unreachable
+    USE_SERVER = false;
+    return localApi(path, options);
+  }
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || ('Request failed ' + res.status));
+  return data;
+}
+
+async function localApi(path, options = {}) {
+  const method = (options.method || 'GET').toUpperCase();
+  let body = {};
+  if (options.body && !(options.body instanceof FormData)) {
+    try { body = JSON.parse(options.body); } catch(e) {}
+  }
+
+  // REGISTER
+  if (path === '/api/register' && method === 'POST') {
+    const name = (body.name || '').trim();
+    const email = (body.email || '').trim().toLowerCase();
+    const password = body.password || '';
+    if (name.length < 3) throw new Error('Full real name required (min 3 characters)');
+    if (!email.includes('@')) throw new Error('Valid email required');
+    if (password.length < 8 || !/[A-Za-z]/.test(password) || !/[0-9]/.test(password)) {
+      throw new Error('Password must be 8+ characters with letter and number');
+    }
+    const users = getLocalUsers();
+    if (users[email]) throw new Error('This email is already registered. Please Sign In instead.');
+    users[email] = {
+      name, email, pass: password, createdAt: Date.now(),
+      status: 'none', plan: null, amount: 0, isInvestment: false,
+      investAmount: 0, investMonths: 0, activatedAt: null
+    };
+    saveLocalUsers(users);
+    const token = 'local_' + email;
+    return { ok: true, token, user: { name, email, status: 'none' } };
+  }
+
+  // LOGIN
+  if (path === '/api/login' && method === 'POST') {
+    const email = (body.email || '').trim().toLowerCase();
+    const password = body.password || '';
+    const users = getLocalUsers();
+    const u = users[email];
+    if (!u || u.pass !== password) throw new Error('Wrong email or password');
+    const token = 'local_' + email;
+    return {
+      ok: true, token,
+      user: {
+        name: u.name, email, status: u.status, plan: u.plan, amount: u.amount,
+        isInvestment: u.isInvestment, investAmount: u.investAmount, investMonths: u.investMonths,
+        activatedAt: u.activatedAt, submittedAt: u.submittedAt
+      }
+    };
+  }
+
+  // ME
+  if (path === '/api/me' && method === 'GET') {
+    if (!authToken || !authToken.startsWith('local_')) throw new Error('Please sign in');
+    const email = authToken.replace('local_', '');
+    const u = getLocalUsers()[email];
+    if (!u) throw new Error('User not found');
+    return {
+      name: u.name, email: u.email, status: u.status, plan: u.plan, amount: u.amount,
+      isInvestment: u.isInvestment, investAmount: u.investAmount, investMonths: u.investMonths,
+      activatedAt: u.activatedAt, submittedAt: u.submittedAt
+    };
+  }
+
+  // PAYMENT (FormData with screenshot)
+  if (path === '/api/payment' && method === 'POST') {
+    if (!authToken || !authToken.startsWith('local_')) throw new Error('Please sign in');
+    const email = authToken.replace('local_', '');
+    const users = getLocalUsers();
+    const u = users[email];
+    if (!u) throw new Error('User not found');
+    const fd = options.body;
+    if (!(fd instanceof FormData) || !fd.get('screenshot')) throw new Error('Payment screenshot is required');
+    const file = fd.get('screenshot');
+    const plan = fd.get('plan') || 'Premium Signals';
+    const amount = parseFloat(fd.get('amount')) || 0;
+    const isInvestment = String(fd.get('isInvestment')) === 'true' || /invest/i.test(plan);
+    const investMonths = isInvestment ? (parseInt(fd.get('investMonths')) || 6) : 0;
+    const id = 'pay_' + Date.now();
+    // read file as data URL
+    const screenshotData = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    let shot = screenshotData;
+    if (shot.length > 500000) shot = shot.substring(0, 400000);
+    u.status = 'pending';
+    u.plan = plan; u.amount = amount; u.isInvestment = isInvestment;
+    u.investAmount = isInvestment ? amount : 0; u.investMonths = investMonths;
+    u.submittedAt = Date.now(); u.activatedAt = null; u.paymentId = id;
+    users[email] = u;
+    saveLocalUsers(users);
+    const payments = getLocalPayments().filter(p => !(p.email === email && p.status === 'pending'));
+    payments.unshift({
+      id, email, name: u.name, plan, amount, isInvestment, investMonths,
+      screenshot: shot, status: 'pending', submittedAt: Date.now(), activatedAt: null
+    });
+    try { saveLocalPayments(payments.slice(0, 20)); } catch(e) {
+      payments.forEach((p,i) => { if (i>0) p.screenshot = null; });
+      saveLocalPayments(payments.slice(0, 10));
+    }
+    return { ok: true, status: 'pending' };
+  }
+
+  // ADMIN LIST
+  if (path === '/api/admin/payments' && method === 'GET') {
+    return getLocalPayments();
+  }
+
+  // ADMIN APPROVE
+  if (path === '/api/admin/approve' && method === 'POST') {
+    const id = body.id;
+    const payments = getLocalPayments();
+    const p = payments.find(x => x.id === id);
+    if (!p) throw new Error('Payment not found');
+    p.status = 'active'; p.activatedAt = Date.now();
+    saveLocalPayments(payments);
+    const users = getLocalUsers();
+    if (users[p.email]) {
+      users[p.email].status = 'active';
+      users[p.email].activatedAt = p.activatedAt;
+      users[p.email].isInvestment = p.isInvestment;
+      users[p.email].investAmount = p.isInvestment ? p.amount : 0;
+      users[p.email].investMonths = p.investMonths || 0;
+      users[p.email].plan = p.plan;
+      users[p.email].amount = p.amount;
+      saveLocalUsers(users);
+    }
+    return { ok: true, message: 'Approved for ' + p.name };
+  }
+
+  // ADMIN REJECT
+  if (path === '/api/admin/reject' && method === 'POST') {
+    const id = body.id;
+    const payments = getLocalPayments();
+    const p = payments.find(x => x.id === id);
+    if (!p) throw new Error('Payment not found');
+    p.status = 'rejected';
+    saveLocalPayments(payments);
+    const users = getLocalUsers();
+    if (users[p.email]) { users[p.email].status = 'rejected'; saveLocalUsers(users); }
+    return { ok: true };
+  }
+
+  throw new Error('Unknown request: ' + path);
+}
+
+function updateNavAuth() {
+  const u = currentUser;
+  const navUser = document.getElementById('navUser');
+  const btnLogin = document.getElementById('btnLogin');
+  const btnJoin = document.getElementById('btnJoin');
+  const btnLogout = document.getElementById('btnLogout');
+  const btnMy = document.getElementById('btnMyAccount');
+  if (u && authToken) {
+    if (navUser) { navUser.style.display = 'inline'; navUser.textContent = u.name || u.email; }
+    if (btnLogin) btnLogin.classList.add('hidden');
+    if (btnJoin) btnJoin.classList.add('hidden');
+    if (btnLogout) btnLogout.classList.remove('hidden');
+    if (btnMy) btnMy.classList.remove('hidden');
+  } else {
+    if (navUser) { navUser.style.display = 'none'; navUser.textContent = ''; }
+    if (btnLogin) btnLogin.classList.remove('hidden');
+    if (btnJoin) btnJoin.classList.remove('hidden');
+    if (btnLogout) btnLogout.classList.add('hidden');
+    if (btnMy) btnMy.classList.add('hidden');
+  }
+}
+
+function logoutUser() {
+  setAuth('', null);
+  document.getElementById('memberArea').classList.add('hidden');
+  alert('Logged out. Sign in again to see your private account.');
+}
+
+async function proceedToPayment() {
+  const isSignup = !document.getElementById('signupForm').classList.contains('hidden');
+  try {
+    if (isSignup) {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('regPass').value;
+      if (!name || name.length < 3) { alert('Please enter your full real name (at least 3 characters)'); return; }
+      if (!email || !email.includes('@') || !email.includes('.')) { alert('Please enter a valid email address'); return; }
+      if (!pass || pass.length < 8) { alert('Password must be at least 8 characters'); return; }
+      if (!/[A-Za-z]/.test(pass) || !/[0-9]/.test(pass)) { alert('Password must contain at least one letter and one number'); return; }
+
+      const data = await api('/api/register', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password: pass })
+      });
+      setAuth(data.token, data.user);
+    } else {
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('loginPass').value;
+      if (!email || !pass) { alert('Please enter email and password'); return; }
+      const data = await api('/api/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password: pass })
+      });
+      setAuth(data.token, data.user);
+      if (data.user.status === 'active' || data.user.status === 'pending' || data.user.status === 'rejected') {
+        closeModal();
+        unlockMemberArea();
+        return;
+      }
+      if (!currentPlan) {
+        closeModal();
+        alert('Signed in. Choose Premium or Investment to continue.');
+        return;
+      }
+    }
+
+    document.getElementById('signupForm').classList.add('hidden');
+    document.getElementById('signinForm').classList.add('hidden');
+    document.getElementById('activationSection').classList.add('hidden');
+    document.getElementById('paymentSection').classList.remove('hidden');
+    document.getElementById('modalTitle').textContent = 'Payment';
+    const amount = currentPlan ? currentPlan.price : '—';
+    document.getElementById('paymentDesc').textContent = 'Send exactly $' + amount + ' (or equivalent) to one of the wallets below, then upload screenshot.';
+    document.getElementById('walletList').innerHTML = Object.entries(wallets).map(([coin, addr]) => `
+      <div class="wallet-item">
+        <div><strong>${coin.replace('_',' ')}</strong><br><span style="font-size:0.72rem;opacity:0.8;">${addr}</span></div>
+        <button onclick="copyAddr('${addr}')">Copy</button>
+      </div>
+    `).join('');
+  } catch (err) {
+    alert(err.message || 'Request failed');
+    if ((err.message || '').toLowerCase().includes('already registered')) {
+      switchTab('signin');
+    }
+  }
+}
+
+function copyAddr(addr) {
+  navigator.clipboard.writeText(addr).then(() => alert('Address copied!'));
+}
+
+async function submitPaymentProof() {
+  const fileInput = document.getElementById('payScreenshot');
+  const file = fileInput && fileInput.files && fileInput.files[0];
+  const btn = document.getElementById('submitPayBtn');
+  if (!file) { alert('Please upload a screenshot of your payment.'); return; }
+  if (!file.type.startsWith('image/')) { alert('Please upload an image file (screenshot).'); return; }
+  if (!authToken) { alert('Please register or sign in first.'); return; }
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Uploading screenshot...'; }
+
+  try {
+    const isInv = !!(currentPlan && (currentPlan.name === 'Crypto Investment' || String(currentPlan.name || '').toLowerCase().includes('invest')));
+    const amountVal = currentPlan ? (parseFloat(currentPlan.price) || 0) : 0;
+    const monthsVal = isInv ? (parseInt(currentPlan.months) || 6) : 0;
+
+    const fd = new FormData();
+    fd.append('screenshot', file);
+    fd.append('plan', currentPlan ? currentPlan.name : 'Premium Signals');
+    fd.append('amount', String(amountVal));
+    fd.append('isInvestment', isInv ? 'true' : 'false');
+    fd.append('investMonths', String(monthsVal));
+
+    const data = await api('/api/payment', { method: 'POST', body: fd, headers: {} });
+    // refresh me
+    const me = await api('/api/me');
+    setAuth(authToken, me);
+
+    document.getElementById('paymentSection').classList.add('hidden');
+    document.getElementById('activationSection').classList.remove('hidden');
+    document.getElementById('modalTitle').textContent = 'Pending Verification';
+    document.getElementById('activationMsg').textContent = isInv
+      ? 'Screenshot received for YOUR account. After admin verifies, only you will see your Investment page.'
+      : 'Screenshot received for YOUR account. After admin verifies, only you will see your Premium Signals.';
+    unlockMemberArea();
+  } catch (err) {
+    alert(err.message || 'Upload failed');
+  }
+  if (btn) { btn.disabled = false; btn.textContent = 'Submit Payment Screenshot'; }
+}
+
+async function unlockMemberArea() {
+  if (!authToken) {
+    alert('Please Sign In to view your private account.');
+    openAuth('signin');
+    return;
+  }
+  try {
+    const user = await api('/api/me');
+    setAuth(authToken, user);
+
+    document.getElementById('memberArea').classList.remove('hidden');
+    document.getElementById('memberName').textContent = user.name || user.email;
+
+    const signalsCard = document.getElementById('signalsCard');
+    const investCard = document.getElementById('investCard');
+    const pendingNotice = document.getElementById('pendingNotice');
+    const titleEl = document.querySelector('#memberArea .section-title');
+    const planEl = document.getElementById('memberPlan');
+
+    signalsCard.style.display = 'none';
+    investCard.style.display = 'none';
+    pendingNotice.style.display = 'none';
+
+    if (user.status === 'rejected') {
+      if (titleEl) titleEl.textContent = 'Payment Rejected';
+      if (planEl) planEl.textContent = 'Contact support';
+      pendingNotice.style.display = 'block';
+      pendingNotice.innerHTML = '<p style="color:#ff5252;">Your payment was not approved. Please contact support or submit a new payment screenshot.</p>';
+      document.getElementById('memberArea').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    if (user.status !== 'active') {
+      if (titleEl) titleEl.textContent = 'My Account – Pending';
+      if (planEl) planEl.textContent = 'Awaiting verification';
+      pendingNotice.style.display = 'block';
+      pendingNotice.innerHTML = '<p style="color:var(--muted);">⏳ <strong>' + (user.name||'') + '</strong>, your payment is waiting for admin verification.<br>Only <strong>you</strong> can see this account after approval.</p>';
+      document.getElementById('memberArea').scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    if (user.isInvestment) {
+      if (titleEl) titleEl.textContent = 'My Private Investment Page';
+      if (planEl) planEl.textContent = 'Investment – $' + user.amount + ' / ' + (user.investMonths || 0) + ' months';
+      investCard.style.display = 'block';
+      startProfitGrowth(user.investAmount, user.activatedAt || user.submittedAt || Date.now(), user.investMonths || 6);
+      setTimeout(() => investCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+    } else {
+      if (titleEl) titleEl.textContent = 'My Private Premium Signals';
+      if (planEl) planEl.textContent = (user.plan || 'Premium') + (user.amount ? ' ($' + user.amount + ')' : '');
+      signalsCard.style.display = 'block';
+      startLiveAiSignals();
+      setTimeout(() => signalsCard.scrollIntoView({ behavior: 'smooth', block: 'center' }), 200);
+    }
+  } catch (err) {
+    if ((err.message || '').includes('sign in')) {
+      setAuth('', null);
+      openAuth('signin');
+    } else {
+      alert(err.message || 'Could not load account');
+    }
+  }
+}
+
+/* ========== LIVE AI SIGNAL GENERATOR ========== */
+const aiPairs = ['BTC/USDT','ETH/USDT','SOL/USDT','BNB/USDT','XRP/USDT','AVAX/USDT','ADA/USDT','DOT/USDT','LINK/USDT','MATIC/USDT'];
+let aiSignalTimer = null;
+
+function startLiveAiSignals() {
+  const box = document.getElementById('liveAiSignals');
+  if (!box) return;
+  box.innerHTML = '<div style="color:var(--muted);padding:8px;">AI Boss engine starting...</div>';
+  generateOneAiSignal();
+  if (aiSignalTimer) clearInterval(aiSignalTimer);
+  aiSignalTimer = setInterval(generateOneAiSignal, 55000 + Math.random()*35000);
+}
+
+function generateOneAiSignal() {
+  const box = document.getElementById('liveAiSignals');
+  if (!box) return;
+  const pair = aiPairs[Math.floor(Math.random()*aiPairs.length)];
+  const side = Math.random() > 0.42 ? 'BUY' : 'SELL';
+  const entry = (Math.random()*500 + 10).toFixed(side==='BUY'?2:4);
+  const tp = (parseFloat(entry) * (side==='BUY' ? 1.018 : 0.982)).toFixed(4);
+  const sl = (parseFloat(entry) * (side==='BUY' ? 0.991 : 1.009)).toFixed(4);
+  const conf = 68 + Math.floor(Math.random()*28);
+  const time = new Date().toLocaleTimeString();
+  const html = `
+    <div class="signal-item" style="animation:slideIn .4s ease;">
+      <div>
+        <span class="pair">${pair}</span>
+        <span class="${side==='BUY'?'badge-buy':'badge-sell'}" style="margin-left:8px;">${side}</span>
+        <span style="margin-left:6px;font-size:0.72rem;color:var(--primary);">${conf}% conf</span>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Entry ${entry} • TP ${tp} • SL ${sl}</div>
+      </div>
+      <div style="font-size:0.72rem;color:var(--muted);">${time}</div>
+    </div>`;
+  box.insertAdjacentHTML('afterbegin', html);
+  // keep only last 12
+  while (box.children.length > 12) box.removeChild(box.lastChild);
+}
+
+/* ========== INVESTMENT PROFIT GROWTH ========== */
+let profitAnimId = null;
+let _investFinalValue = 0;
+
+function startProfitGrowth(principal, startTs, totalMonths) {
+  totalMonths = Math.max(1, parseInt(totalMonths) || 6);
+  const monthlyRate = 0.08;
+  const msPerMonth = 30.44 * 24 * 60 * 60 * 1000;
+  const endTs = startTs + (totalMonths * msPerMonth);
+  const startDate = new Date(startTs);
+  const endDate = new Date(endTs);
+  const finalValue = principal * Math.pow(1 + monthlyRate, totalMonths);
+
+  document.getElementById('investStartDate').textContent = startDate.toLocaleDateString();
+  document.getElementById('investEndDate').textContent = endDate.toLocaleDateString();
+  document.getElementById('investPrincipal').textContent = '$' + principal.toLocaleString();
+  document.getElementById('investTerm').textContent = totalMonths + ' month' + (totalMonths > 1 ? 's' : '');
+  document.getElementById('withdrawBox').style.display = 'none';
+  _investFinalValue = finalValue;
+
+  function update() {
+    const now = Date.now();
+    let elapsedMonths = (now - startTs) / msPerMonth;
+    let completed = false;
+
+    if (elapsedMonths >= totalMonths) {
+      elapsedMonths = totalMonths;
+      completed = true;
+    }
+
+    const value = principal * Math.pow(1 + monthlyRate, elapsedMonths);
+    const profit = value - principal;
+    const pct = principal > 0 ? (profit / principal) * 100 : 0;
+    const termProgress = Math.min(100, (elapsedMonths / totalMonths) * 100);
+
+    document.getElementById('investValue').textContent = '$' + value.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    document.getElementById('investProfit').textContent = (profit>=0?'+':'') + '$' + profit.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+    document.getElementById('investPct').textContent = pct.toFixed(2) + '%';
+    document.getElementById('profitBar').style.width = termProgress + '%';
+    document.getElementById('investProgressText').textContent = termProgress.toFixed(1) + '%';
+
+    drawProfitChart(principal, totalMonths, elapsedMonths);
+
+    if (completed) {
+      document.getElementById('withdrawBox').style.display = 'block';
+      if (profitAnimId) {
+        clearInterval(profitAnimId);
+        profitAnimId = null;
+      }
+    }
+  }
+
+  update();
+  if (profitAnimId) clearInterval(profitAnimId);
+  profitAnimId = setInterval(update, 3000);
+}
+
+function requestWithdraw() {
+  const val = _investFinalValue ? ('$' + _investFinalValue.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})) : 'your balance';
+  alert('Withdrawal request submitted for ' + val + '.\n\nPlease contact support with your wallet address to receive your funds.\n\nSupport will process your withdrawal shortly.');
+}
+
+function drawProfitChart(principal, totalMonths, elapsedMonths) {
+  const canvas = document.getElementById('profitChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 120 * dpr;
+  ctx.scale(dpr, dpr);
+  const w = rect.width;
+  const h = 120;
+  ctx.clearRect(0,0,w,h);
+
+  const points = [];
+  const steps = 40;
+  for (let i=0; i<=steps; i++) {
+    const m = (totalMonths / steps) * i;
+    const v = principal * Math.pow(1.08, m);
+    points.push(v);
+  }
+  const min = principal * 0.98;
+  const max = Math.max(...points) * 1.02;
+  const range = max - min || 1;
+
+  ctx.strokeStyle = '#00e676';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  points.forEach((p,i) => {
+    const x = (i/steps) * w;
+    const y = h - ((p-min)/range)*(h-16) - 8;
+    if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+
+  // fill
+  ctx.lineTo(w, h);
+  ctx.lineTo(0, h);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0,0,0,h);
+  grad.addColorStop(0,'rgba(0,230,118,0.25)');
+  grad.addColorStop(1,'rgba(0,230,118,0)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+}
+
+function startTestimonialCycle() {
+  showNextTestimonial();
+  setInterval(showNextTestimonial, 15000);
+}
+function showNextTestimonial() {
+  const t = fullTestimonials[testiIndex % fullTestimonials.length];
+  testiIndex++;
+  document.getElementById('testiAvatar').textContent = t.initials;
+  document.getElementById('testiName').textContent = t.name;
+  document.getElementById('testiTime').textContent = 'just now';
+  document.getElementById('testiText').textContent = t.text;
+  const popup = document.getElementById('testiPopup');
+  popup.classList.add('show');
+  setTimeout(() => popup.classList.remove('show'), 6000);
+}
+
+// On load: restore member if already activated
+
+function checkExistingMember() {
+  loadCachedUser();
+  updateNavAuth();
+  if (authToken) {
+    setTimeout(() => { unlockMemberArea().catch(()=>{}); }, 500);
+  }
+}
+
+function openAdmin() {
+  const code = prompt('Enter Admin Code:');
+  if (code === 'aether2026') {
+    window._adminCode = code;
+    document.getElementById('adminArea').classList.remove('hidden');
+    refreshAdminTable();
+    document.getElementById('adminArea').scrollIntoView({ behavior: 'smooth' });
+  } else if (code !== null) {
+    alert('Wrong code');
+  }
+}
+
+async function refreshAdminTable() {
+  const tbody = document.getElementById('adminTableBody');
+  try {
+    const all = await api('/api/admin/payments', {
+      method: 'GET',
+      headers: { 'x-admin-code': window._adminCode || 'aether2026' }
+    });
+    if (!all.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="padding:20px;text-align:center;color:var(--muted);">No payments yet</td></tr>';
+      return;
+    }
+    tbody.innerHTML = all.map(u => {
+      const statusColor = u.status === 'active' ? 'var(--green)' : u.status === 'rejected' ? '#ff5252' : '#ffd700';
+      const statusText = u.status === 'active' ? 'APPROVED' : u.status === 'rejected' ? 'REJECTED' : 'PENDING';
+      const actionBtn = u.status === 'pending'
+        ? `<button class="btn btn-primary btn-sm" style="padding:4px 10px;font-size:0.75rem;" onclick="approvePayment('${u.id}')">Approve</button>
+           <button class="btn btn-outline btn-sm" style="padding:4px 10px;font-size:0.75rem;margin-left:4px;" onclick="rejectPayment('${u.id}')">Reject</button>`
+        : `<span style="font-size:0.75rem;color:var(--muted);">—</span>`;
+      const img = u.screenshot
+        ? `<img src="${u.screenshot}" style="max-width:80px;max-height:55px;border-radius:4px;cursor:pointer;border:1px solid var(--border);" onclick="window.open('${u.screenshot}','_blank')" title="Click to enlarge">`
+        : '—';
+      return `<tr>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);">
+          <div>${u.name||'—'}</div>
+          <div style="font-size:0.72rem;color:var(--muted);">${u.email||''}</div>
+        </td>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);">${u.plan||'—'}</td>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);">$${u.amount||0}</td>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);">${img}</td>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);"><span style="color:${statusColor};font-weight:600;font-size:0.78rem;">${statusText}</span></td>
+        <td style="padding:10px 8px;border-bottom:1px solid rgba(30,42,63,0.5);">${actionBtn}</td>
+      </tr>`;
+    }).join('');
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6" style="padding:20px;text-align:center;color:#ff5252;">${err.message}</td></tr>`;
+  }
+}
+
+async function approvePayment(id) {
+  try {
+    await api('/api/admin/approve', {
+      method: 'POST',
+      headers: { 'x-admin-code': window._adminCode || 'aether2026', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    });
+    alert('Payment approved. User will see their private page after Sign In / refresh.');
+    refreshAdminTable();
+    if (authToken) unlockMemberArea().catch(()=>{});
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+async function rejectPayment(id) {
+  if (!confirm('Reject this payment?')) return;
+  try {
+    await api('/api/admin/reject', {
+      method: 'POST',
+      headers: { 'x-admin-code': window._adminCode || 'aether2026', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id })
+    });
+    refreshAdminTable();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// Secret admin: click logo 7 times
+(function() {
+  let clicks = 0;
+  let timer = null;
+  document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.getElementById('mainLogo');
+    if (!logo) return;
+    logo.addEventListener('click', function() {
+      clicks++;
+      clearTimeout(timer);
+      timer = setTimeout(() => { clicks = 0; }, 2500);
+      if (clicks >= 7) {
+        clicks = 0;
+        openAdmin();
+      }
+    });
+  });
+})();
+
+// Live password strength hint
+document.addEventListener('DOMContentLoaded', () => {
+  const passInput = document.getElementById('regPass');
+  if (passInput) {
+    passInput.addEventListener('input', () => {
+      const p = passInput.value;
+      const el = document.getElementById('passStrength');
+      if (!el) return;
+      if (p.length === 0) { el.textContent = ''; return; }
+      let score = 0;
+      if (p.length >= 8) score++;
+      if (/[A-Za-z]/.test(p)) score++;
+      if (/[0-9]/.test(p)) score++;
+      if (/[^A-Za-z0-9]/.test(p)) score++;
+      const labels = ['Too weak','Weak','Fair','Strong','Very strong'];
+      const colors = ['#ff5252','#ff5252','#ffd700','#00e676','#00e676'];
+      el.textContent = labels[score] || 'Too weak';
+      el.style.color = colors[score] || '#ff5252';
+    });
+  }
+  const shotInput = document.getElementById('payScreenshot');
+  if (shotInput) {
+    shotInput.addEventListener('change', () => {
+      const preview = document.getElementById('screenshotPreview');
+      const img = document.getElementById('screenshotImg');
+      const nameEl = document.getElementById('selectedFileName');
+      const f = shotInput.files && shotInput.files[0];
+      if (f && img && preview) {
+        const url = URL.createObjectURL(f);
+        img.src = url;
+        preview.style.display = 'block';
+        if (nameEl) {
+          nameEl.style.display = 'block';
+          nameEl.textContent = 'Selected: ' + f.name + ' (' + Math.round(f.size/1024) + ' KB)';
+        }
+      }
+    });
+  }
+});
+
+init();
+checkExistingMember();
+</script>
+</body>
+</html>
